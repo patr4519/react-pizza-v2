@@ -1,5 +1,10 @@
+import React from "react";
+
 function PizzaBlock(props) {
   const typeNames = ["тонкое", "традиционное"];
+
+  const [activeType, setActiveType] = React.useState(0);
+  const [activeSize, setActiveSize] = React.useState(0);
 
   return (
     <div className="pizza-block">
@@ -7,15 +12,17 @@ function PizzaBlock(props) {
       <h4 className="pizza-block__title">{props.title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {
-            props.types.map((typeId, index) => (
-              <li key={index}>{typeNames[typeId]}</li>
-            ))
-          }
+          {props.types.map((typeId, index) => (
+            <li onClick={() => setActiveType(index)} key={index} className={activeType === index ? "active" : ""}>
+              {typeNames[typeId]}
+            </li>
+          ))}
         </ul>
         <ul>
           {props.sizes.map((item, index) => (
-            <li key={index}>{item} см.</li>
+            <li onClick={() => setActiveSize(index)} key={index} className={activeSize === index ? "active" : ""}>
+              {item} см.
+            </li>
           ))}
         </ul>
       </div>
