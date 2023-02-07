@@ -13,14 +13,22 @@ function PizzaBlock(props) {
       <div className="pizza-block__selector">
         <ul>
           {props.types.map((typeId, index) => (
-            <li onClick={() => setActiveType(index)} key={index} className={activeType === index ? "active" : ""}>
+            <li
+              onClick={() => setActiveType(index)}
+              key={index}
+              className={activeType === index ? "active" : ""}
+            >
               {typeNames[typeId]}
             </li>
           ))}
         </ul>
         <ul>
           {props.sizes.map((item, index) => (
-            <li onClick={() => setActiveSize(index)} key={index} className={activeSize === index ? "active" : ""}>
+            <li
+              onClick={() => setActiveSize(index)}
+              key={index}
+              className={activeSize === index ? "active" : ""}
+            >
               {item} см.
             </li>
           ))}
