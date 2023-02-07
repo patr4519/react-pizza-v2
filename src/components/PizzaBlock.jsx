@@ -1,5 +1,5 @@
 function PizzaBlock(props) {
-  const typeNames = ['тонкое', 'традиционное'];
+  const typeNames = ["тонкое", "традиционное"];
 
   return (
     <div className="pizza-block">
@@ -7,8 +7,11 @@ function PizzaBlock(props) {
       <h4 className="pizza-block__title">{props.title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          {
+            props.types.map((typeId, index) => (
+              <li key={index}>{typeNames[typeId]}</li>
+            ))
+          }
         </ul>
         <ul>
           {props.sizes.map((item, index) => (
