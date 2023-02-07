@@ -1,11 +1,9 @@
 function PizzaBlock(props) {
+  const typeNames = ['тонкое', 'традиционное'];
+
   return (
     <div className="pizza-block">
-      <img
-        className="pizza-block__image"
-        src={props.imageUrl}
-        alt="Pizza"
-      />
+      <img className="pizza-block__image" src={props.imageUrl} alt="Pizza" />
       <h4 className="pizza-block__title">{props.title}</h4>
       <div className="pizza-block__selector">
         <ul>
@@ -13,9 +11,9 @@ function PizzaBlock(props) {
           <li>традиционное</li>
         </ul>
         <ul>
-          <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {props.sizes.map((item, index) => (
+            <li key={index}>{item} см.</li>
+          ))}
         </ul>
       </div>
       <div className="pizza-block__bottom">
