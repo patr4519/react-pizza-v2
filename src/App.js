@@ -6,7 +6,17 @@ import Sort from "./components/Sort";
 import PizzaBlock from "./components/PizzaBlock";
 import pizzas from "./assets/pizzas.json";
 
+// https://63de9e9ff1af41051b16642d.mockapi.io/items
+
 function App() {
+  const [items, setItems] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://63de9e9ff1af41051b16642d.mockapi.io/items")
+      .then(res => res.json())
+      .then(json => setItems(json));
+  }, []);
+
   return (
     <div className="wrapper">
       <Header />
