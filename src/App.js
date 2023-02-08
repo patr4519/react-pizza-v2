@@ -34,7 +34,7 @@ function App() {
               return <PizzaBlock key={obj.id} {...obj} />;
             })} */}
             {isLoading
-              ? [...new Array(6)].map((obj, item) => <Skeleton key={item}/>)
+              ? [...new Array(12)].map((obj, item) => <Skeleton key={item}/>)
               : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
           </div>
         </div>
