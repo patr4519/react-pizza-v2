@@ -4,7 +4,7 @@ import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 
-  export const Home = () => {
+const Home = () => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -32,3 +32,5 @@ import Skeleton from "../components/PizzaBlock/Skeleton";
     </>
   );
 };
+
+export default Home;
