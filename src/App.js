@@ -2,6 +2,7 @@ import React from "react";
 import "./scss/app.scss";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className="content">
         <div className="container">
           <Home />
+          {/* <NotFound /> */}
         </div>
       </div>
     </div>
