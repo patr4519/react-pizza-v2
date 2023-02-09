@@ -19,15 +19,17 @@ const Home = () => {
 
   return (
     <>
-      <div className="content__top">
-        <Categories />
-        <Sort />
-      </div>
-      <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
-        {isLoading
-          ? [...new Array(12)].map((_, item) => <Skeleton key={item} />)
-          : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
+      <div className="container">
+        <div className="content__top">
+          <Categories />
+          <Sort />
+        </div>
+        <h2 className="content__title">Все пиццы</h2>
+        <div className="content__items">
+          {isLoading
+            ? [...new Array(12)].map((_, item) => <Skeleton key={item} />)
+            : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
+        </div>
       </div>
     </>
   );
