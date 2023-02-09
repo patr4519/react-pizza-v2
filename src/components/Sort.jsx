@@ -2,7 +2,6 @@ import React from "react";
 
 function Sort() {
   const [open, setOpen] = React.useState(false);
-  const [selectedList, setSelectedList] = React.useState(0);
 
   const list = ["популярности", "цене", "алфавиту"];
 
