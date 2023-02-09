@@ -1,12 +1,12 @@
 import React from "react";
 
-function Sort({sortType, setSortType}) {
+function Sort({value, onChangeSort}) {
   const [open, setOpen] = React.useState(false);
 
   const list = ["популярности", "цене", "алфавиту"];
 
   const onChangeList = (index) => {
-    setSortType(index);
+    onChangeSort(index);
     setOpen((prev) => !prev);
   };
 
@@ -27,7 +27,7 @@ function Sort({sortType, setSortType}) {
         </svg>
         <b>Сортировка по:</b>
         <span onClick={() => setOpen((prev) => !prev)}>
-          {list[sortType]}
+          {list[value]}
         </span>
       </div>
       {open && (
@@ -37,7 +37,7 @@ function Sort({sortType, setSortType}) {
               return (
                 <li
                   onClick={() => onChangeList(index)}
-                  className={sortType === index ? "active" : ""}
+                  className={value === index ? "active" : ""}
                   key={index}
                 >
                   {item}
