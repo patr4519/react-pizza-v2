@@ -3,9 +3,9 @@ import React from "react";
 function Categories({ value, onClickCategory }) {
   const categories = [
     "Все",
-    "Вегетарианская",
-    "Гриль",
     "Мясные",
+    "Вегетарианские",
+    "Гриль",
     "Острые",
     "Закрытые",
   ];
