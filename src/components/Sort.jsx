@@ -4,9 +4,12 @@ function Sort({ value, onChangeSort }) {
   const [open, setOpen] = React.useState(false);
 
   const list = [
-    { name: "популярности", sortProperty: "rating" },
-    { name: "цене", sortProperty: "price" },
-    { name: "алфавиту", sortProperty: "title" },
+    { name: "популярности (desc)", sortProperty: "rating" },
+    { name: "популярности (asc)", sortProperty: "-rating" },
+    { name: "цене (desc)", sortProperty: "price" },
+    { name: "цене (asc)", sortProperty: "-price" },
+    { name: "алфавиту (desc)", sortProperty: "title" },
+    { name: "алфавиту (asc)", sortProperty: "-title" },
   ];
 
   const onChangeList = (index) => {
