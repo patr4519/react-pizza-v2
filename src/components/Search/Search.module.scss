@@ -1,4 +1,5 @@
 .root {
+  position: relative;
   input {
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 12px 20px;
@@ -8,6 +9,20 @@
 
     &:focus {
       border: 1px solid rgba(0, 0, 0, 0.933);
+    }
+  }
+
+  .clearIcon {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    opacity: 0.3;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
     }
   }
 }
