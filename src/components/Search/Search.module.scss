@@ -1,5 +1,6 @@
 .root {
   position: relative;
+
   input {
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 12px 20px;
@@ -17,12 +18,27 @@
     height: 25px;
     position: absolute;
     top: 12px;
-    right: 5px;
+    right: 35px;
     opacity: 0.3;
     cursor: pointer;
+    z-index: 1;
 
     &:hover {
       opacity: 0.8;
     }
+  }
+
+  .search {
+    opacity: 0.3;
+    position: absolute;
+    top: 12px;
+    right: 5px;
+  }
+
+  .line {
+    opacity: 0.3;
+    position: absolute;
+    top: 2px;
+    right: 11px;
   }
 }
