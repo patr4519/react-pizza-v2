@@ -1,5 +1,6 @@
 import React from "react";
 import { SearchContext } from "../../App";
+import debounce from "lodash.debounce";
 
 import styles from "./Search.module.scss";
 
@@ -12,11 +13,23 @@ const Search = () => {
     inputRef.current.focus();
   };
 
+  const testDebounce = React.useCallback(
+    debounce(() => {
+      console.log("Hello");
+    }, 1000), []
+  );
+
+  const onChangeInput = (event) => {
+    setSearchValue(event.target.value);
+    testDebounce();
+  };
+
   return (
     <div className={styles.root}>
       <input
         ref={inputRef}
-        onChange={(event) => setSearchValue(event.target.value)}
+        // onChange={(event) => setSearchValue(event.target.value)}
+        onChange={onChangeInput}
         placeholder="Поиск пиццы..."
         value={searchValue}
       />
