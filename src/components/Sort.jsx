@@ -14,6 +14,7 @@ const list = [
 function Sort() {
   const dispatch = useDispatch();
   const sort = useSelector((state) => state.filter.sort);
+  const sortRef = React.useRef();
 
   const [open, setOpen] = React.useState(false);
 
@@ -22,8 +23,17 @@ function Sort() {
     setOpen((prev) => !prev);
   };
 
+  React.useEffect(() => {
+    document.body.addEventListener('click', (event) => {
+      console.log(event);
+      if (event.composedPath().includes(sortRef.current)) {
+        console.log('lalal')
+      }
+    })
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
