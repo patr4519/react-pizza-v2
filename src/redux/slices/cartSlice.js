@@ -5,7 +5,7 @@ const initialState = {
   items: [],
 };
 
-const filterSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -15,12 +15,12 @@ const filterSlice = createSlice({
     removeItem(state, action) {
       state.items = state.items.filter((obj) => obj.id !== action.payload);
     },
-    clearItems(state, action) {
+    clearItems(state) {
       state.items = [];
     },
   },
 });
 
-export const { addItem } = filterSlice.actions;
+export const { addItem, removeItem, clearItems } = cartSlice.actions;
 
-export default filterSlice.reducer;
+export default cartSlice.reducer;
