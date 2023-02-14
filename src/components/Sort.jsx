@@ -24,12 +24,18 @@ function Sort() {
   };
 
   React.useEffect(() => {
-    document.body.addEventListener('click', (event) => {
-      console.log(event);
-      if (event.composedPath().includes(sortRef.current)) {
-        console.log('lalal')
+    const handleClickOutside = (event) => {
+      if (!event.composedPath().includes(sortRef.current)) {
+        setOpen(false);
+        console.log("click outside");
       }
-    })
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside)
+    }
   }, []);
 
   return (
