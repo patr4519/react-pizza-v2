@@ -33,7 +33,7 @@ const CartItem = ({ id, title, type, price, count, imageUrl }) => {
             ></path>
           </svg>
         </div>
-        <b>2</b>
+        <b>{count}</b>
         <div className="button button--outline button--circle cart__item-count-plus">
           <svg
             width="10"
