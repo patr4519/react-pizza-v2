@@ -24,8 +24,8 @@ const Home = () => {
   };
 
   const onChangePage = (number) => {
-    dispatch(setCurrentPage(number))
-  }
+    dispatch(setCurrentPage(number));
+  };
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -42,7 +42,11 @@ const Home = () => {
       .then((res) => {
         setItems(res.data);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        alert(err.message);
       });
+
     window.scrollTo(0, 0);
   }, [categoryId, sortType, searchValue, currentPage]);
 
