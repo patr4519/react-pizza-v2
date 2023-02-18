@@ -40,7 +40,7 @@ const Home = () => {
     dispatch(setCurrentPage(number));
   };
 
-  const fetchPizzas = () => {
+  const fetchPizzas = async () => {
     setIsLoading(true);
 
     const order = sortType.includes("-") ? "asc" : "desc";
@@ -48,23 +48,22 @@ const Home = () => {
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const search = searchValue ? `&search=${searchValue}` : "";
 
-    axios
-      .get(
+    try {
+      const res = await axios.get(
         `https://63de9e9ff1af41051b16642d.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-      )
-      .then((res) => {
-        dispatch(setItems(res.data));
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+      );
+
+      dispatch(setItems(res.data));
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      alert(err.message);
+    }
   };
 
   // 1. Если изменили параметры и был первый рендер
   React.useEffect(() => {
     if (isMounted.current) {
-      console.log("useEffect 1");
       const queryString = qs.stringify({
         sortProperty: sortType,
         categoryId,
