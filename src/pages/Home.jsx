@@ -49,10 +49,10 @@ const Home = () => {
     const search = searchValue ? `&search=${searchValue}` : "";
 
     try {
-      const res = await axios.get(
+      const { data } = await axios.get(
         `https://63de9e9ff1af41051b16642d.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
       );
-      dispatch(setItems(res.data));
+      dispatch(setItems(data));
     } catch (err) {
       alert(err.message);
     } finally {
