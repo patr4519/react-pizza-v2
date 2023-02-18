@@ -52,12 +52,11 @@ const Home = () => {
       const res = await axios.get(
         `https://63de9e9ff1af41051b16642d.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
       );
-
       dispatch(setItems(res.data));
-      setIsLoading(false);
     } catch (err) {
-      setIsLoading(false);
       alert(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
