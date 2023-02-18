@@ -9,7 +9,7 @@ body {
 
 .wrapper {
   width: calc(100vw - 100px);
-  height: 100%;   
+  height: 100%;
   background-color: #fff;
   margin: 50px auto;
   border-radius: 10px;
@@ -366,5 +366,34 @@ body {
 
   .content__items {
     display: block;
+  }
+}
+
+.cartEmpty {
+  text-align: center;
+  position: relative;
+  min-height: 500px;
+
+  p {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .buttonCart {
+    padding: 10px 55px;
+    background-color: #000c;
+    font-size: 18px;
+    color: white;
+    border-radius: 15px;
+    border: 0;
+    position: absolute;
+    bottom: -30px;
+    right: 586px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.74);
+      cursor: pointer;
+    }
   }
 }
