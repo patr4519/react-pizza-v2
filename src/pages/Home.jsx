@@ -1,7 +1,6 @@
 import React from "react";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Categories from "../components/Categories";
 import Sort, { list } from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
@@ -40,8 +39,6 @@ const Home = () => {
   };
 
   const getPizzas = async () => {
-    // setIsLoading(true);
-
     const order = sortType.includes("-") ? "asc" : "desc";
     const sortBy = sortType.replace("-", "");
     const category = categoryId > 0 ? `category=${categoryId}` : "";
@@ -56,9 +53,10 @@ const Home = () => {
         currentPage,
       })
     );
+
+    window.scroll(0, 0);
   };
 
-  // 1. Если изменили параметры и был первый рендер
   React.useEffect(() => {
     if (isMounted.current) {
       const queryString = qs.stringify({
@@ -73,7 +71,6 @@ const Home = () => {
     isMounted.current = true;
   }, [categoryId, sortType, searchValue, currentPage]);
 
-  // 2. Если был первый рендер - проверяем URL параметры и сохраняем в редаксе
   React.useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
@@ -90,15 +87,8 @@ const Home = () => {
     }
   }, []);
 
-  // 3. Если был первый рендер - запрашиваем пиццы
   React.useEffect(() => {
-    // if (!isSearch.current) {
-    //   getPizzas();
-    // }
-    // isSearch.current = false;
-
     getPizzas();
-
     window.scrollTo(0, 0);
   }, [categoryId, sortType, searchValue, currentPage]);
 
@@ -119,7 +109,9 @@ const Home = () => {
         {status === "error" ? (
           <div className="content__error-info">
             <h2>Произошла ошибка</h2>
-            <p>Не удалось получить пиццы, попробуйте повторить попытку позже.</p>
+            <p>
+              Не удалось получить пиццы, попробуйте повторить попытку позже.
+            </p>
           </div>
         ) : (
           <div className="content__items">
