@@ -6,7 +6,6 @@ import Sort, { list } from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from "../components/Pagination";
-import { SearchContext } from "../App";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCategoryId,
@@ -28,7 +27,6 @@ const Home = () => {
   const searchValue = useSelector((state) => state.filter.searchValue);
 
   const { items, status } = useSelector((state) => state.pizza);
-
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
