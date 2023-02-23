@@ -1,27 +1,25 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../redux/slices/cartSlice";
+import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
 
 const typeNames = ["тонкое", "традиционное"];
 
-function PizzaBlock(props) {
+function PizzaBlock({id, title, price, imageUrl, sizes, types, rating}) {
   const dispatch = useDispatch();
-  const cartItem = useSelector((state) =>
-    state.cart.items.find((obj) => obj.id === props.id)
-  );
+  const cartItem = useSelector(selectCartItemById(id));
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
   const addedCount = cartItem ? cartItem.count : 0;
-
+  
   const onClickAdd = () => {
     const item = {
-      id: props.id,
-      title: props.title,
-      price: props.price,
-      imageUrl: props.imageUrl,
+      id: id,
+      title: title,
+      price: price,
+      imageUrl: imageUrl,
       type: typeNames[activeType],
-      size: props.sizes[activeSize]
+      size: sizes[activeSize]
     };
     dispatch(addItem(item));
   };
@@ -29,11 +27,11 @@ function PizzaBlock(props) {
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
-        <img className="pizza-block__image" src={props.imageUrl} alt="Pizza" />
-        <h4 className="pizza-block__title">{props.title}</h4>
+        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+        <h4 className="pizza-block__title">{title}</h4>
         <div className="pizza-block__selector">
           <ul>
-            {props.types.map((typeId, index) => (
+            {types.map((typeId, index) => (
               <li
                 onClick={() => setActiveType(index)}
                 key={index}
@@ -44,7 +42,7 @@ function PizzaBlock(props) {
             ))}
           </ul>
           <ul>
-            {props.sizes.map((item, index) => (
+            {sizes.map((item, index) => (
               <li
                 onClick={() => setActiveSize(index)}
                 key={index}
@@ -56,7 +54,7 @@ function PizzaBlock(props) {
           </ul>
         </div>
         <div className="pizza-block__bottom">
-          <div className="pizza-block__price">от {props.price} ₽</div>
+          <div className="pizza-block__price">от {price} ₽</div>
           <button
             onClick={onClickAdd}
             className="button button--outline button--add"
