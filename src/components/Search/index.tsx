@@ -4,9 +4,9 @@ import styles from "./Search.module.scss";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/filterSlice";
 
-const Search = () => {
+const Search: React.FC = () => {
   const dispatch = useDispatch();
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState<string>("");
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const onClickClear = () => {
@@ -14,7 +14,8 @@ const Search = () => {
     setValue("");
     // if (inputRef.current) {
     //   inputRef.current.focus();
-    // }
+    // } 
+    // альтернативная запись 
     inputRef.current?.focus();
   };
 
