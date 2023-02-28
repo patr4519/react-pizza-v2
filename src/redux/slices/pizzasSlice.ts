@@ -15,19 +15,18 @@ export const fetchPizzas = createAsyncThunk(
   }
 );
 
-
 type Pizza = {
-  id: string,
-  title: string,
-  price: number,
-  imageUrl: string,
-  sizes: number[],
-  types: number[],
-  rating: number,
-}
+  id: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+  sizes: number[];
+  types: number[];
+  rating: number;
+};
 interface PizzaSliceState {
-  items: Pizza[],
-  status: 'loading' | 'success' | 'error',
+  items: Pizza[];
+  status: "loading" | "success" | "error";
 }
 
 const initialState: PizzaSliceState = {
@@ -43,20 +42,36 @@ const pizzaSlice = createSlice({
       state.items = action.payload;
     },
   },
-  extraReducers: {
-    [fetchPizzas.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchPizzas.pending, (state, action) => {
       state.status = "loading";
       state.items = [];
-    },
-    [fetchPizzas.fulfilled]: (state, action) => {
+    }) 
+
+    builder.addCase(fetchPizzas.fulfilled, (state, action) => {
       state.items = action.payload;
-      state.status = "success";
-    },
-    [fetchPizzas.rejected]: (state, action) => {
+      state.status = 'success'
+    }) 
+
+    builder.addCase(fetchPizzas.rejected, (state, action) => {
       state.status = "error";
       state.items = [];
-    },
+    }) 
   },
+  // extraReducers: {
+  //   [fetchPizzas.pending]: (state) => {
+  //     state.status = "loading";
+  //     state.items = [];
+  //   },
+  //   [fetchPizzas.fulfilled]: (state, action) => {
+  //     state.items = action.payload;
+  //     state.status = "success";
+  //   },
+  //   [fetchPizzas.rejected]: (state, action) => {
+  //     state.status = "error";
+  //     state.items = [];
+  //   },
+  // },
 });
 
 export const { setItems } = pizzaSlice.actions;
